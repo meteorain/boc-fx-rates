@@ -11,7 +11,7 @@
   "closedNote": { "message": "Mercato chiuso — ultimo giorno di contrattazione" },
   "searchPlaceholder": { "message": "Cerca valuta…" },
   "extensionName": { "message": "Banca di Cina — tassi di cambio" },
-  "extensionDesc": { "message": "Tassi di cambio della Banca di Cina in tempo reale. Scegli le valute da mostrare, fissa il tasso che ti interessa sul badge della barra degli strumenti e ricevi avvisi al superamento di una soglia. Basato su Manifest V3." },
+  "extensionDesc": { "message": "Cambi Banca di Cina in tempo reale: scegli le valute, tasso sul badge, andamenti, convertitore e avvisi." },
   "header": { "message": "Tassi di cambio Banca di Cina" },
   "optionsTitle": { "message": "Tassi Banca di Cina · Impostazioni" },
   "updatedAt": { "message": "Aggiornato" },

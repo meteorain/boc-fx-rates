@@ -11,7 +11,7 @@
   "closedNote": { "message": "시장 휴장 — 최근 거래일 환율 표시" },
   "searchPlaceholder": { "message": "통화 검색…" },
   "extensionName": { "message": "중국은행 환율" },
-  "extensionDesc": { "message": "중국은행 외환 환율을 실시간으로 표시합니다. 표시할 통화를 자유롭게 선택하고, 관심 있는 환율을 툴바 배지에 고정하며, 임계값을 넘으면 알림을 보냅니다. Manifest V3 기반." },
+  "extensionDesc": { "message": "중국은행 실시간 환율. 통화 선택, 배지 고정, 추세, 환산, 임계값 알림을 지원합니다." },
   "header": { "message": "중국은행 환율" },
   "optionsTitle": { "message": "중국은행 환율 · 설정" },
   "updatedAt": { "message": "업데이트" },

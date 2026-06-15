@@ -11,7 +11,7 @@
   "closedNote": { "message": "市場は休場中 — 直近営業日のレートを表示" },
   "searchPlaceholder": { "message": "通貨を検索…" },
   "extensionName": { "message": "中国銀行 為替レート" },
-  "extensionDesc": { "message": "中国銀行の外貨為替レートをリアルタイム表示。表示する通貨を自由に選べ、気になるレートをツールバーのバッジに固定でき、しきい値を超えると通知します。Manifest V3 ベース。" },
+  "extensionDesc": { "message": "中国銀行のリアルタイム為替レート。表示通貨の選択、バッジ固定、推移、換算、しきい値通知に対応。" },
   "header": { "message": "中国銀行 為替レート" },
   "optionsTitle": { "message": "中国銀行 為替レート · 設定" },
   "updatedAt": { "message": "更新" },

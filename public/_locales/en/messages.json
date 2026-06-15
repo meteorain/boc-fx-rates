@@ -36,7 +36,7 @@
     "message": "Bank of China Exchange Rates"
   },
   "extensionDesc": {
-    "message": "Live Bank of China FX board: CNY rates against major currencies. Choose which currencies to show, pin the rate you care about on the toolbar badge, and get alerts when a rate crosses your threshold. Built on Manifest V3."
+    "message": "Live Bank of China FX rates: pick currencies to show, pin one on the toolbar badge, see trends, convert, and get rate alerts."
   },
   "header": {
     "message": "Bank of China FX Rates"
