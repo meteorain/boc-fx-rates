@@ -254,11 +254,13 @@ function rangeCell(points: TrendPoint[]): HTMLElement | null {
   highEnd.className = 'range__end';
   highEnd.textContent = chrome.i18n.getMessage('rangeEndHigh');
 
-  // Plain-language read of the position: low / mid / high.
+  // Plain-language read of the position: low / mid / high. The exact percent
+  // is intentionally omitted (it read as a magnitude); the bar shows position
+  // and the hover tooltip gives the actual low/high values.
   const qualKey = pos < 33 ? 'rangeLowPos' : pos > 67 ? 'rangeHighPos' : 'rangeMidPos';
   const cap = document.createElement('span');
   cap.className = 'range__cap';
-  cap.textContent = `${chrome.i18n.getMessage(qualKey)} ${pos}%`;
+  cap.textContent = chrome.i18n.getMessage(qualKey);
 
   wrap.append(lowEnd, track, highEnd, cap);
   return wrap;
