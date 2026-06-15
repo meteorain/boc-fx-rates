@@ -13,6 +13,8 @@ const FREQUENCIES = [10, 30, 60, 120] as const;
 const THEMES: Theme[] = ['auto', 'light', 'dark'];
 
 const currencyGrid = document.getElementById('currency-grid') as HTMLElement;
+const currencySearch = document.getElementById('currency-search') as HTMLInputElement;
+const orderBox = document.getElementById('currency-order') as HTMLElement;
 const badgeCurrencySel = document.getElementById('badge-currency') as HTMLSelectElement;
 const badgeRateTypeBox = document.getElementById('badge-rate-type') as HTMLElement;
 const frequencyBox = document.getElementById('frequency') as HTMLElement;
@@ -89,6 +91,15 @@ function renderChips(): void {
   }
 }
 
+/** Filter the chip grid by code or localized name. */
+function filterChips(query: string): void {
+  const q = query.trim().toLowerCase();
+  currencyGrid.querySelectorAll<HTMLElement>('.chip').forEach((chip) => {
+    const code = chip.dataset.code!;
+    chip.hidden = q !== '' && !code.toLowerCase().includes(q) && !currencyName(code).toLowerCase().includes(q);
+  });
+}
+
 function toggleCurrency(code: string, chip: HTMLElement): void {
   if (selected.includes(code)) {
     selected = selected.filter((c) => c !== code);
@@ -98,6 +109,54 @@ function toggleCurrency(code: string, chip: HTMLElement): void {
     chip.classList.add('is-active');
   }
   renderThresholds();
+  renderOrder();
+}
+
+// ---- reorderable display-order strip ----
+let dragIndex = -1;
+
+function renderOrder(): void {
+  orderBox.replaceChildren();
+  orderBox.hidden = selected.length < 2; // reordering only matters with 2+
+  selected.forEach((code) => {
+    const pill = document.createElement('div');
+    pill.className = 'order-pill';
+    pill.draggable = true;
+    pill.dataset.code = code;
+    pill.title = currencyName(code);
+
+    const grip = document.createElement('span');
+    grip.className = 'order-pill__grip';
+    grip.textContent = '⠿';
+    pill.append(grip, document.createTextNode(code));
+
+    pill.addEventListener('dragstart', () => {
+      dragIndex = selected.indexOf(code);
+      pill.classList.add('is-dragging');
+    });
+    pill.addEventListener('dragend', () => {
+      dragIndex = -1;
+      orderBox
+        .querySelectorAll('.order-pill')
+        .forEach((p) => p.classList.remove('is-dragging', 'is-over'));
+    });
+    pill.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      if (pill.dataset.code !== selected[dragIndex]) pill.classList.add('is-over');
+    });
+    pill.addEventListener('dragleave', () => pill.classList.remove('is-over'));
+    pill.addEventListener('drop', (e) => {
+      e.preventDefault();
+      const to = selected.indexOf(code);
+      if (dragIndex > -1 && dragIndex !== to) {
+        const [moved] = selected.splice(dragIndex, 1);
+        selected.splice(to, 0, moved);
+        renderOrder();
+      }
+    });
+
+    orderBox.append(pill);
+  });
 }
 
 // ---- thresholds ----
@@ -220,6 +279,9 @@ async function init(): Promise<void> {
 
   renderChips();
   renderThresholds();
+  renderOrder();
+  currencySearch.placeholder = chrome.i18n.getMessage('searchPlaceholder');
+  currencySearch.addEventListener('input', () => filterChips(currencySearch.value));
 
   badgeCurrencySel.replaceChildren(
     ...availableCodes.map((c) => option(c, `${c} · ${currencyName(c)}`, settings.badgeCurrency)),

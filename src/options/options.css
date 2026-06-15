@@ -100,11 +100,78 @@ body {
   color: var(--text-muted);
 }
 
+/* ---- currency search ---- */
+.search {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: 13px;
+}
+
+.search:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
 /* ---- currency chips ---- */
 .chip-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(132px, 1fr));
   gap: 8px;
+}
+
+.chip[hidden] {
+  display: none;
+}
+
+/* ---- reorderable order strip ---- */
+.order-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--border);
+}
+
+.order-strip[hidden] {
+  display: none;
+}
+
+.order-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: grab;
+  user-select: none;
+  transition: border-color 0.15s, opacity 0.15s;
+}
+
+.order-pill__grip {
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1;
+}
+
+.order-pill.is-dragging {
+  opacity: 0.4;
+  cursor: grabbing;
+}
+
+.order-pill.is-over {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-soft);
 }
 
 .chip {

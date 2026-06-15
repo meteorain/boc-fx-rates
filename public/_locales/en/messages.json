@@ -1,4 +1,7 @@
 {
+  "searchPlaceholder": {
+    "message": "Search currency…"
+  },
   "extensionName": {
     "message": "Bank of China Exchange Rates"
   },

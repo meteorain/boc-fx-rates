@@ -1,4 +1,7 @@
 {
+  "searchPlaceholder": {
+    "message": "搜索币种…"
+  },
   "extensionName": {
     "message": "中国银行外汇汇率牌价"
   },

@@ -1,4 +1,5 @@
 {
+  "searchPlaceholder": { "message": "통화 검색…" },
   "extensionName": { "message": "중국은행 환율" },
   "extensionDesc": { "message": "중국은행 외환 환율을 실시간으로 표시합니다. 표시할 통화를 자유롭게 선택하고, 관심 있는 환율을 툴바 배지에 고정하며, 임계값을 넘으면 알림을 보냅니다. Manifest V3 기반." },
   "header": { "message": "중국은행 환율" },
