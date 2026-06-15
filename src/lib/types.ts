@@ -22,6 +22,22 @@ export interface Threshold {
 }
 
 /** User settings, persisted in chrome.storage.sync. */
+/** Push a daily digest of selected currencies at a set local time. */
+export interface DailySummaryConfig {
+  enabled: boolean;
+  time: string; // "HH:MM"
+}
+/** Alert when a currency's mid rate moves at least `percent` in a day. */
+export interface MoveAlertConfig {
+  enabled: boolean;
+  percent: number;
+}
+/** Alert when a currency's mid rate hits an N-day high or low. */
+export interface ExtremeAlertConfig {
+  enabled: boolean;
+  days: number;
+}
+
 export interface Settings {
   selectedCurrencies: string[];
   badgeCurrency: string;
@@ -32,6 +48,9 @@ export interface Settings {
   trendDays: number;
   /** UI theme: follow the OS, or force light / dark. */
   theme: 'auto' | 'light' | 'dark';
+  dailySummary: DailySummaryConfig;
+  moveAlert: MoveAlertConfig;
+  extremeAlert: ExtremeAlertConfig;
 }
 
 /** Cached rate payload, persisted in chrome.storage.local. */

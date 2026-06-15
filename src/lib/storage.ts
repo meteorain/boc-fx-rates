@@ -8,6 +8,9 @@ export const DEFAULT_SETTINGS: Settings = {
   thresholds: {},
   trendDays: 30,
   theme: 'auto',
+  dailySummary: { enabled: false, time: '10:00' },
+  moveAlert: { enabled: false, percent: 1 },
+  extremeAlert: { enabled: false, days: 30 },
 };
 
 /** Read user settings, merged over defaults so callers never see undefined. */

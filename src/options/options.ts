@@ -17,6 +17,14 @@ const badgeCurrencySel = document.getElementById('badge-currency') as HTMLSelect
 const badgeRateTypeBox = document.getElementById('badge-rate-type') as HTMLElement;
 const frequencyBox = document.getElementById('frequency') as HTMLElement;
 const themeBox = document.getElementById('theme') as HTMLElement;
+
+const summaryOn = document.getElementById('summary-on') as HTMLInputElement;
+const summaryTime = document.getElementById('summary-time') as HTMLInputElement;
+const moveOn = document.getElementById('move-on') as HTMLInputElement;
+const movePercent = document.getElementById('move-percent') as HTMLInputElement;
+const extremeOn = document.getElementById('extreme-on') as HTMLInputElement;
+const extremeDays = document.getElementById('extreme-days') as HTMLSelectElement;
+const EXTREME_WINDOWS = [7, 30, 90] as const;
 const thresholdsBox = document.getElementById('thresholds') as HTMLElement;
 const thresholdsEmpty = document.getElementById('thresholds-empty') as HTMLElement;
 const toast = document.getElementById('toast') as HTMLElement;
@@ -181,10 +189,20 @@ async function save(): Promise<void> {
     badgeRateType,
     updateFrequency,
     thresholds: collectThresholds(),
+    dailySummary: { enabled: summaryOn.checked, time: summaryTime.value || '10:00' },
+    moveAlert: { enabled: moveOn.checked, percent: Number(movePercent.value) || 1 },
+    extremeAlert: { enabled: extremeOn.checked, days: Number(extremeDays.value) || 30 },
   });
 
   showToast(chrome.i18n.getMessage('alertSaved'));
   void chrome.runtime.sendMessage('refresh-badge');
+}
+
+/** Enable/disable a row's input(s) in step with its toggle switch. */
+function bindAlert(toggle: HTMLInputElement, controls: Array<HTMLInputElement | HTMLSelectElement>): void {
+  const sync = (): void => controls.forEach((c) => (c.disabled = !toggle.checked));
+  sync();
+  toggle.addEventListener('change', sync);
 }
 
 // ---- init ----
@@ -233,6 +251,21 @@ async function init(): Promise<void> {
     applyTheme(theme);
     void setSettings({ theme });
   });
+
+  // Smart alerts.
+  extremeDays.replaceChildren(
+    ...EXTREME_WINDOWS.map((d) =>
+      option(String(d), `${d} ${chrome.i18n.getMessage('alertDaysUnit')}`, String(settings.extremeAlert.days)),
+    ),
+  );
+  summaryOn.checked = settings.dailySummary.enabled;
+  summaryTime.value = settings.dailySummary.time;
+  moveOn.checked = settings.moveAlert.enabled;
+  movePercent.value = String(settings.moveAlert.percent);
+  extremeOn.checked = settings.extremeAlert.enabled;
+  bindAlert(summaryOn, [summaryTime]);
+  bindAlert(moveOn, [movePercent]);
+  bindAlert(extremeOn, [extremeDays]);
 
   document.getElementById('save')?.addEventListener('click', () => void save());
 }

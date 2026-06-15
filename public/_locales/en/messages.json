@@ -129,5 +129,41 @@
   },
   "notificationBelow": {
     "message": "fell below"
+  },
+  "smartAlerts": {
+    "message": "Smart alerts"
+  },
+  "smartAlertsHint": {
+    "message": "Based on the middle rate (中行折算价), for your selected currencies."
+  },
+  "alertSummary": {
+    "message": "Daily summary"
+  },
+  "alertSummaryDesc": {
+    "message": "Push selected currencies' rates at a set time"
+  },
+  "alertMove": {
+    "message": "Big move alert"
+  },
+  "alertMoveDesc": {
+    "message": "Notify when the daily change exceeds your limit"
+  },
+  "alertExtreme": {
+    "message": "High / low alert"
+  },
+  "alertExtremeDesc": {
+    "message": "Notify on a new range high or low (a good time to exchange)"
+  },
+  "alertDaysUnit": {
+    "message": "days"
+  },
+  "alertNewHigh": {
+    "message": "hit a new high"
+  },
+  "alertNewLow": {
+    "message": "hit a new low"
+  },
+  "summaryTitle": {
+    "message": "Daily rate summary"
   }
 }

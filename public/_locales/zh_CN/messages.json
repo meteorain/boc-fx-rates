@@ -129,5 +129,41 @@
   },
   "notificationBelow": {
     "message": "已跌破下限"
+  },
+  "smartAlerts": {
+    "message": "智能提醒"
+  },
+  "smartAlertsHint": {
+    "message": "基于中行折算价，针对你已选择的币种。"
+  },
+  "alertSummary": {
+    "message": "每日摘要"
+  },
+  "alertSummaryDesc": {
+    "message": "每天定时推送所选币种当日牌价"
+  },
+  "alertMove": {
+    "message": "大幅波动提醒"
+  },
+  "alertMoveDesc": {
+    "message": "当日涨跌幅超过设定值时提醒"
+  },
+  "alertExtreme": {
+    "message": "新高 / 新低提醒"
+  },
+  "alertExtremeDesc": {
+    "message": "创区间新高或新低时提醒（换汇时机）"
+  },
+  "alertDaysUnit": {
+    "message": "天"
+  },
+  "alertNewHigh": {
+    "message": "创新高"
+  },
+  "alertNewLow": {
+    "message": "创新低"
+  },
+  "summaryTitle": {
+    "message": "每日汇率摘要"
   }
 }
