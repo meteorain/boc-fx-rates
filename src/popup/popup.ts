@@ -1,6 +1,6 @@
 import './popup.css';
-import { getCache, getSettings } from '@/lib/storage';
-import { getTrends, trendSupported } from '@/lib/trend';
+import { getCache, getSettings, setSettings } from '@/lib/storage';
+import { getTrends, trendSupported, windowed, TREND_WINDOWS } from '@/lib/trend';
 import { currencyName, rateTypeName, RATE_TYPES } from '@/lib/currencies';
 import type { CurrencyRate, RateType, TrendPoint, WorkerResponse } from '@/lib/types';
 
@@ -8,9 +8,15 @@ const SVG_NS = 'http://www.w3.org/2000/svg';
 
 const list = document.getElementById('list') as HTMLElement;
 const updated = document.getElementById('updated') as HTMLElement;
+const windowEl = document.getElementById('window') as HTMLElement;
 const empty = document.getElementById('empty') as HTMLElement;
 const foot = document.getElementById('foot') as HTMLElement;
 const refreshBtn = document.getElementById('refresh') as HTMLButtonElement;
+
+// A full year of series is fetched once; the window toggle just re-slices it.
+let fullSeries: Record<string, TrendPoint[]> = {};
+let trendCodes: string[] = [];
+let windowDays = 30;
 
 /** Fill text/title from _locales for every tagged element. */
 function applyI18n(): void {
@@ -127,16 +133,41 @@ function trendCell(points: TrendPoint[]): HTMLElement | null {
   return wrap;
 }
 
-/** Fill the trend slots once series data is available (progressive). */
-async function applyTrends(codes: string[]): Promise<void> {
-  if (!codes.some(trendSupported)) return;
-  const series = await getTrends(codes);
-
-  for (const code of codes) {
+/** Slice the cached year to the active window and (re)paint every trend slot. */
+function renderTrends(): void {
+  for (const code of trendCodes) {
     const slot = list.querySelector<HTMLElement>(`.card[data-code="${code}"] .card__trend`);
     if (!slot) continue;
-    const cell = trendCell(series[code] ?? []);
-    if (cell) slot.replaceChildren(cell);
+    const cell = trendCell(windowed(fullSeries[code] ?? [], windowDays));
+    slot.replaceChildren(...(cell ? [cell] : []));
+  }
+}
+
+/** Fetch the year of series once (progressive), then paint the active window. */
+async function applyTrends(codes: string[]): Promise<void> {
+  trendCodes = codes;
+  if (!codes.some(trendSupported)) return;
+  fullSeries = await getTrends(codes);
+  renderTrends();
+}
+
+/** Build the 30 / 90 / 365-day segmented toggle. */
+function buildWindowToggle(): void {
+  windowEl.replaceChildren();
+  for (const days of TREND_WINDOWS) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = days === windowDays ? 'seg is-active' : 'seg';
+    btn.textContent = chrome.i18n.getMessage(`win${days}`);
+    btn.addEventListener('click', () => {
+      if (days === windowDays) return;
+      windowDays = days;
+      void setSettings({ trendDays: days });
+      windowEl.querySelectorAll('.seg').forEach((s) => s.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      renderTrends(); // instant: no refetch
+    });
+    windowEl.append(btn);
   }
 }
 
@@ -144,16 +175,22 @@ async function render(): Promise<void> {
   const [cache, settings] = await Promise.all([getCache(), getSettings()]);
   list.replaceChildren();
 
+  windowDays = settings.trendDays;
   const codes = settings.selectedCurrencies.filter((c) => cache?.rates[c]);
   if (!cache || codes.length === 0) {
     empty.hidden = false;
     foot.hidden = true;
+    windowEl.hidden = true;
     updated.textContent = '';
     return;
   }
 
   empty.hidden = true;
-  foot.hidden = !codes.some(trendSupported);
+  const hasTrend = codes.some(trendSupported);
+  foot.hidden = !hasTrend;
+  windowEl.hidden = !hasTrend;
+  if (hasTrend) buildWindowToggle();
+
   for (const code of codes) {
     list.append(card(code, cache.rates[code], settings.badgeRateType));
   }

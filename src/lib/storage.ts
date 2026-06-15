@@ -6,6 +6,7 @@ export const DEFAULT_SETTINGS: Settings = {
   badgeRateType: 'BR',
   updateFrequency: 30,
   thresholds: {},
+  trendDays: 30,
 };
 
 /** Read user settings, merged over defaults so callers never see undefined. */

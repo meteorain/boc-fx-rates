@@ -24,8 +24,17 @@
     "message": "No rate data yet — click refresh to retry"
   },
   "trendNote": {
-    "message": "Sparkline shows the 30-day market reference rate (data: frankfurter.dev / ECB). Its shape tracks the BOC board closely; absolute values differ slightly.",
+    "message": "Sparkline shows the market reference rate (data: frankfurter.dev / ECB). Its shape tracks the BOC board closely; absolute values differ slightly.",
     "description": "Footer note clarifying the sparkline data source."
+  },
+  "win30": {
+    "message": "30D"
+  },
+  "win90": {
+    "message": "90D"
+  },
+  "win365": {
+    "message": "1Y"
   },
   "selectCurrency": {
     "message": "Displayed currencies"

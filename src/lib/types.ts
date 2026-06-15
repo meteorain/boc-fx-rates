@@ -28,6 +28,8 @@ export interface Settings {
   badgeRateType: RateType;
   updateFrequency: number;
   thresholds: Record<string, Threshold>;
+  /** Trend window in days (30 / 90 / 365). */
+  trendDays: number;
 }
 
 /** Cached rate payload, persisted in chrome.storage.local. */
