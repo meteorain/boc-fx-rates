@@ -537,8 +537,10 @@ body[data-surface='panel'] {
 
 .range__end {
   flex-shrink: 0;
-  font-size: 10px;
+  font-size: 8px;
+  letter-spacing: 0.5px;
   color: var(--text-muted);
+  opacity: 0.7;
 }
 
 .range__track {
@@ -572,10 +574,9 @@ body[data-surface='panel'] {
 .range__cap {
   flex-shrink: 0;
   text-align: right;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 600;
   color: var(--text-muted);
-  font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 

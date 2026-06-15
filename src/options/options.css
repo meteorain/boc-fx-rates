@@ -323,10 +323,16 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
-/* Time inputs need extra room for the native clock icon, or the last
-   digit gets clipped. */
-input[type='time'].mini-input {
-  width: 112px;
+/* Keep the time field the same width as the other mini-inputs. Hiding the
+   spin arrows reclaims the space that was clipping the last digit, and a
+   tighter picker margin removes the gap after the value. */
+input[type='time'].mini-input::-webkit-inner-spin-button,
+input[type='time'].mini-input::-webkit-clear-button {
+  display: none;
+}
+
+input[type='time'].mini-input::-webkit-calendar-picker-indicator {
+  margin-left: 2px;
 }
 
 .mini-input:focus {
