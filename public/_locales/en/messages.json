@@ -1,4 +1,10 @@
 {
+  "moveUp": {
+    "message": "up"
+  },
+  "moveDown": {
+    "message": "down"
+  },
   "staleNote": {
     "message": "Data may be stale — click refresh"
   },

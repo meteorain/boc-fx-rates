@@ -1,4 +1,6 @@
 {
+  "moveUp": { "message": "gestiegen um" },
+  "moveDown": { "message": "gefallen um" },
   "staleNote": { "message": "Daten evtl. veraltet — aktualisieren" },
   "closedNote": { "message": "Markt geschlossen — letzter Handelstag angezeigt" },
   "searchPlaceholder": { "message": "Währung suchen…" },

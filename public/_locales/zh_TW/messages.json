@@ -1,4 +1,6 @@
 {
+  "moveUp": { "message": "上漲" },
+  "moveDown": { "message": "下跌" },
   "staleNote": { "message": "資料可能已過期，點重新整理重試" },
   "closedNote": { "message": "市場休市中，顯示最近交易日牌價" },
   "searchPlaceholder": { "message": "搜尋幣別…" },

@@ -1,4 +1,6 @@
 {
+  "moveUp": { "message": "subió" },
+  "moveDown": { "message": "bajó" },
   "staleNote": { "message": "Datos quizá obsoletos — actualiza" },
   "closedNote": { "message": "Mercado cerrado — último día de cotización" },
   "searchPlaceholder": { "message": "Buscar divisa…" },

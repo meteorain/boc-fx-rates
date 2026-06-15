@@ -186,7 +186,7 @@ function alertNotif(
   const name = currencyName(code);
   let message: string;
   if (kind === 'move') {
-    const dir = chrome.i18n.getMessage(arg >= 0 ? 'notificationAbove' : 'notificationBelow');
+    const dir = chrome.i18n.getMessage(arg >= 0 ? 'moveUp' : 'moveDown');
     message = `${name} ${dir} ${Math.abs(arg).toFixed(2)}% · ${rate}`;
   } else {
     const label = chrome.i18n.getMessage(kind === 'high' ? 'alertNewHigh' : 'alertNewLow');

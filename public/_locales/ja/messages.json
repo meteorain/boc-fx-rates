@@ -1,4 +1,6 @@
 {
+  "moveUp": { "message": "上昇" },
+  "moveDown": { "message": "下落" },
   "staleNote": { "message": "データが古い可能性があります — 更新してください" },
   "closedNote": { "message": "市場は休場中 — 直近営業日のレートを表示" },
   "searchPlaceholder": { "message": "通貨を検索…" },

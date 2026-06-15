@@ -1,4 +1,10 @@
 {
+  "moveUp": {
+    "message": "上涨"
+  },
+  "moveDown": {
+    "message": "下跌"
+  },
   "staleNote": {
     "message": "数据可能已过期，点刷新重试"
   },

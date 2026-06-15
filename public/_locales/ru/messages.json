@@ -1,4 +1,6 @@
 {
+  "moveUp": { "message": "вырос на" },
+  "moveDown": { "message": "упал на" },
   "staleNote": { "message": "Данные могут быть устаревшими — обновите" },
   "closedNote": { "message": "Рынок закрыт — показан последний торговый день" },
   "searchPlaceholder": { "message": "Поиск валюты…" },

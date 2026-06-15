@@ -1,4 +1,6 @@
 {
+  "moveUp": { "message": "in rialzo del" },
+  "moveDown": { "message": "in ribasso del" },
   "staleNote": { "message": "Dati forse non aggiornati — aggiorna" },
   "closedNote": { "message": "Mercato chiuso — ultimo giorno di contrattazione" },
   "searchPlaceholder": { "message": "Cerca valuta…" },
