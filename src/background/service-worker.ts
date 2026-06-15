@@ -233,23 +233,41 @@ function nextDailyTime(hhmm: string): number {
   return next.getTime();
 }
 
-/** (Re)create the polling alarm from the user's configured frequency. */
-async function syncAlarm(): Promise<void> {
-  const { updateFrequency } = await getSettings();
-  await chrome.alarms.create(ALARM_NAME, { periodInMinutes: updateFrequency });
-}
+/**
+ * Ensure alarms exist WITHOUT disturbing a running schedule — safe to call on
+ * every service-worker spawn. Recreating a periodic alarm restarts its
+ * countdown, so doing that on each wake-up could keep pushing the fetch past
+ * its interval. We only create when missing (and clear the summary if off).
+ */
+async function ensureAlarms(): Promise<void> {
+  const { updateFrequency, dailySummary } = await getSettings();
 
-/** Schedule (or clear) the daily summary alarm per settings. */
-async function syncSummaryAlarm(): Promise<void> {
-  const { dailySummary } = await getSettings();
+  if (!(await chrome.alarms.get(ALARM_NAME))) {
+    await chrome.alarms.create(ALARM_NAME, { periodInMinutes: updateFrequency });
+  }
+
   if (!dailySummary.enabled) {
     await chrome.alarms.clear(SUMMARY_ALARM);
-    return;
+  } else if (!(await chrome.alarms.get(SUMMARY_ALARM))) {
+    await chrome.alarms.create(SUMMARY_ALARM, {
+      when: nextDailyTime(dailySummary.time),
+      periodInMinutes: 1440,
+    });
   }
-  await chrome.alarms.create(SUMMARY_ALARM, {
-    when: nextDailyTime(dailySummary.time),
-    periodInMinutes: 1440,
-  });
+}
+
+/** Force-apply alarm schedules after the user changes settings. */
+async function applyAlarmSettings(): Promise<void> {
+  const { updateFrequency, dailySummary } = await getSettings();
+  await chrome.alarms.create(ALARM_NAME, { periodInMinutes: updateFrequency });
+  if (dailySummary.enabled) {
+    await chrome.alarms.create(SUMMARY_ALARM, {
+      when: nextDailyTime(dailySummary.time),
+      periodInMinutes: 1440,
+    });
+  } else {
+    await chrome.alarms.clear(SUMMARY_ALARM);
+  }
 }
 
 chrome.alarms.onAlarm.addListener((alarm) => {
@@ -264,10 +282,7 @@ chrome.runtime.onMessage.addListener(
     (async () => {
       try {
         await refreshRates();
-        if (message === 'refresh-badge') {
-          await syncAlarm();
-          await syncSummaryAlarm();
-        }
+        if (message === 'refresh-badge') await applyAlarmSettings();
         sendResponse({ status: 'completed' });
       } catch (error) {
         console.error('Refresh failed:', error);
@@ -291,8 +306,7 @@ chrome.runtime.onStartup.addListener(() => void bootstrap());
 
 /** Ensure alarms exist and we have at least one fetch on disk. */
 async function bootstrap(): Promise<void> {
-  await syncAlarm();
-  await syncSummaryAlarm();
+  await ensureAlarms();
   const cache = await getCache();
   if (!cache) {
     try {
