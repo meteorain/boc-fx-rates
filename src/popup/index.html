@@ -13,6 +13,32 @@
         <span class="brand__title" data-i18n="header"></span>
       </a>
       <div class="topbar__actions">
+        <button id="calc" class="icon-btn" type="button" data-i18n-title="converter">
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+            <rect
+              x="5"
+              y="3"
+              width="14"
+              height="18"
+              rx="2.5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            />
+            <path
+              d="M9 7.5h6"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+            <path
+              d="M9.5 12h0M14.5 12h0M9.5 16h0M14.5 16h0"
+              stroke="currentColor"
+              stroke-width="2.4"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
         <button id="refresh" class="icon-btn" type="button" data-i18n-title="refresh">
           <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
             <path
@@ -50,8 +76,46 @@
 
     <div class="meta">
       <span id="updated" class="updated"></span>
-      <div id="window" class="window" role="group"></div>
+      <div id="window" class="segbar" role="group"></div>
     </div>
+
+    <section id="converter" class="converter" aria-hidden="true">
+      <div class="converter__inner">
+        <div class="converter__head">
+          <div id="conv-cash" class="segbar" role="group"></div>
+          <select id="conv-currency" class="select conv__currency"></select>
+        </div>
+        <div class="conv__give">
+          <input
+            id="conv-amount"
+            class="conv__amount"
+            type="number"
+            inputmode="decimal"
+            min="0"
+            value="100"
+          />
+          <span id="conv-give-unit" class="conv__unit"></span>
+        </div>
+        <button id="conv-swap" class="conv__swap" type="button" data-i18n-title="convSwap">
+          <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true">
+            <path
+              d="M7 4v13m0 0-3-3m3 3 3-3M17 20V7m0 0-3 3m3-3 3 3"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+        <div class="conv__get">
+          <span id="conv-out" class="conv__out"></span>
+          <span id="conv-get-unit" class="conv__unit"></span>
+        </div>
+        <p id="conv-rate" class="conv__rate"></p>
+      </div>
+    </section>
+
     <main id="list" class="list"></main>
 
     <section id="empty" class="empty" hidden>

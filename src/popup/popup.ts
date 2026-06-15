@@ -1,6 +1,7 @@
 import './popup.css';
 import { getCache, getSettings, setSettings } from '@/lib/storage';
 import { getTrends, trendSupported, windowed, TREND_WINDOWS } from '@/lib/trend';
+import { initConverter } from './converter';
 import { currencyName, rateTypeName, RATE_TYPES } from '@/lib/currencies';
 import type { CurrencyRate, RateType, TrendPoint, WorkerResponse } from '@/lib/types';
 
@@ -268,3 +269,17 @@ document.getElementById('empty-refresh')?.addEventListener('click', () => void r
 document
   .getElementById('options')
   ?.addEventListener('click', () => chrome.runtime.openOptionsPage());
+
+// Currency converter: reveal on demand, initialised once.
+const converter = document.getElementById('converter') as HTMLElement;
+const calcBtn = document.getElementById('calc') as HTMLButtonElement;
+let converterReady = false;
+calcBtn.addEventListener('click', () => {
+  const open = converter.classList.toggle('is-open');
+  converter.setAttribute('aria-hidden', String(!open));
+  calcBtn.classList.toggle('is-active', open);
+  if (open && !converterReady) {
+    converterReady = true;
+    void initConverter();
+  }
+});

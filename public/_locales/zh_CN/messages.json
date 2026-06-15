@@ -36,6 +36,24 @@
   "win365": {
     "message": "1年"
   },
+  "converter": {
+    "message": "货币换算器"
+  },
+  "convWire": {
+    "message": "现汇"
+  },
+  "convCash": {
+    "message": "现钞"
+  },
+  "convSwap": {
+    "message": "切换换算方向"
+  },
+  "convNoQuote": {
+    "message": "该币种暂无此方向报价"
+  },
+  "per100": {
+    "message": "每 100"
+  },
   "selectCurrency": {
     "message": "展示币种"
   },

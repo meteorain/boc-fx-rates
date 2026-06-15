@@ -36,6 +36,24 @@
   "win365": {
     "message": "1Y"
   },
+  "converter": {
+    "message": "Currency converter"
+  },
+  "convWire": {
+    "message": "Wire"
+  },
+  "convCash": {
+    "message": "Cash"
+  },
+  "convSwap": {
+    "message": "Swap direction"
+  },
+  "convNoQuote": {
+    "message": "No quote for this direction"
+  },
+  "per100": {
+    "message": "per 100"
+  },
   "selectCurrency": {
     "message": "Displayed currencies"
   },

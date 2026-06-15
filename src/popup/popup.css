@@ -92,7 +92,8 @@ body {
   transition: color 0.15s, border-color 0.15s, background 0.15s;
 }
 
-.icon-btn:hover {
+.icon-btn:hover,
+.icon-btn.is-active {
   color: var(--accent);
   border-color: var(--accent);
   background: var(--accent-soft);
@@ -121,8 +122,8 @@ body {
   color: var(--text-muted);
 }
 
-/* iOS-style segmented window toggle */
-.window {
+/* iOS-style segmented control (shared by window toggle + converter) */
+.segbar {
   display: inline-flex;
   padding: 2px;
   gap: 2px;
@@ -131,7 +132,7 @@ body {
   border-radius: 9px;
 }
 
-.window[hidden] {
+.segbar[hidden] {
   display: none;
 }
 
@@ -156,6 +157,129 @@ body {
   background: var(--surface);
   color: var(--accent);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+
+/* ---- converter ---- */
+.converter {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  margin-bottom: 0;
+  transition: grid-template-rows 0.24s ease, opacity 0.24s ease, margin 0.24s ease;
+}
+
+.converter.is-open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  margin-bottom: 12px;
+}
+
+.converter__inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.converter.is-open .converter__inner {
+  padding: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.converter__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.conv__currency {
+  width: auto;
+  flex: 1;
+  max-width: 190px;
+  padding: 7px 10px;
+  font-size: 12px;
+}
+
+.conv__give,
+.conv__get {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface-2);
+}
+
+.conv__amount {
+  flex: 1;
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  font-size: 19px;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.conv__amount::-webkit-outer-spin-button,
+.conv__amount::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+.conv__amount:focus {
+  outline: none;
+}
+
+.conv__out {
+  flex: 1;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.conv__unit {
+  flex-shrink: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.conv__swap {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  margin: 6px auto;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--accent);
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.15s;
+}
+
+.conv__swap:hover {
+  background: var(--accent-soft);
+  transform: rotate(180deg);
+}
+
+.conv__rate {
+  margin: 10px 2px 0;
+  font-size: 11px;
+  color: var(--text-muted);
+  text-align: center;
+  font-variant-numeric: tabular-nums;
 }
 
 /* ---- currency cards ---- */
