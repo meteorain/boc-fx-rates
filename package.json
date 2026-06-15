@@ -9,6 +9,8 @@
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "zip": "cd dist && zip -r ../boc-exchange-rate.zip ."
   },
   "devDependencies": {
@@ -16,6 +18,7 @@
     "@types/chrome": "^0.0.287",
     "@types/node": "^22.19.21",
     "typescript": "^5.7.3",
-    "vite": "^6.0.7"
+    "vite": "^6.0.7",
+    "vitest": "^2.1.9"
   }
 }
