@@ -16,6 +16,11 @@ const foot = document.getElementById('foot') as HTMLElement;
 const notice = document.getElementById('notice') as HTMLElement;
 const refreshBtn = document.getElementById('refresh') as HTMLButtonElement;
 
+// The same page serves both the popup and the side panel; ?panel=1 marks the
+// latter so it can lay out fluidly instead of at the fixed popup width.
+const isPanel = new URLSearchParams(location.search).has('panel');
+if (isPanel) document.body.dataset.surface = 'panel';
+
 /** Today's date in Beijing time as "YYYY/MM/DD", matching the board format. */
 function beijingToday(): string {
   return new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Shanghai' })
@@ -345,6 +350,19 @@ document.getElementById('empty-refresh')?.addEventListener('click', () => void r
 document
   .getElementById('options')
   ?.addEventListener('click', () => chrome.runtime.openOptionsPage());
+
+// Open in the side panel (only offered from the popup, when supported).
+const sidepanelBtn = document.getElementById('sidepanel') as HTMLButtonElement;
+if (!isPanel && chrome.sidePanel) {
+  sidepanelBtn.hidden = false;
+  sidepanelBtn.addEventListener('click', async () => {
+    const win = await chrome.windows.getCurrent();
+    if (win.id == null) return;
+    await chrome.sidePanel.setOptions({ path: 'src/popup/index.html?panel=1', enabled: true });
+    await chrome.sidePanel.open({ windowId: win.id });
+    window.close();
+  });
+}
 
 // Currency converter: reveal on demand, initialised once.
 const converter = document.getElementById('converter') as HTMLElement;

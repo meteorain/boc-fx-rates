@@ -1,4 +1,5 @@
 {
+  "openSidePanel": { "message": "サイドパネルで開く" },
   "moveUp": { "message": "上昇" },
   "moveDown": { "message": "下落" },
   "staleNote": { "message": "データが古い可能性があります — 更新してください" },

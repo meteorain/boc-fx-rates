@@ -1,4 +1,7 @@
 {
+  "openSidePanel": {
+    "message": "在侧边栏打开"
+  },
   "moveUp": {
     "message": "上涨"
   },

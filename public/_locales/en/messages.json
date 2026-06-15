@@ -1,4 +1,7 @@
 {
+  "openSidePanel": {
+    "message": "Open in side panel"
+  },
   "moveUp": {
     "message": "up"
   },

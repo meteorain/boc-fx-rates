@@ -1,4 +1,5 @@
 {
+  "openSidePanel": { "message": "在側邊欄開啟" },
   "moveUp": { "message": "上漲" },
   "moveDown": { "message": "下跌" },
   "staleNote": { "message": "資料可能已過期，點重新整理重試" },

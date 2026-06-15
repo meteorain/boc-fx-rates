@@ -1,4 +1,5 @@
 {
+  "openSidePanel": { "message": "Apri nel pannello laterale" },
   "moveUp": { "message": "in rialzo del" },
   "moveDown": { "message": "in ribasso del" },
   "staleNote": { "message": "Dati forse non aggiornati — aggiorna" },

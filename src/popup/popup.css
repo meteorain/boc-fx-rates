@@ -66,6 +66,12 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* The side panel reuses this page but fills its (resizable) width. */
+body[data-surface='panel'] {
+  width: auto;
+  min-width: 300px;
+}
+
 /* ---- top bar ---- */
 .topbar {
   display: flex;

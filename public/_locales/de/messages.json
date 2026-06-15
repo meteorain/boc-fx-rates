@@ -1,4 +1,5 @@
 {
+  "openSidePanel": { "message": "In Seitenleiste öffnen" },
   "moveUp": { "message": "gestiegen um" },
   "moveDown": { "message": "gefallen um" },
   "staleNote": { "message": "Daten evtl. veraltet — aktualisieren" },

@@ -7,7 +7,7 @@ export default defineManifest({
   description: '__MSG_extensionDesc__',
   version: pkg.version,
   default_locale: 'zh_CN',
-  permissions: ['alarms', 'storage', 'notifications'],
+  permissions: ['alarms', 'storage', 'notifications', 'sidePanel'],
   host_permissions: ['https://www.boc.cn/', 'https://api.frankfurter.dev/'],
   background: {
     service_worker: 'src/background/service-worker.ts',
@@ -22,6 +22,9 @@ export default defineManifest({
     },
   },
   options_page: 'src/options/index.html',
+  side_panel: {
+    default_path: 'src/popup/index.html',
+  },
   icons: {
     16: 'images/icon16.png',
     48: 'images/icon48.png',

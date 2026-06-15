@@ -1,4 +1,5 @@
 {
+  "openSidePanel": { "message": "Открыть на боковой панели" },
   "moveUp": { "message": "вырос на" },
   "moveDown": { "message": "упал на" },
   "staleNote": { "message": "Данные могут быть устаревшими — обновите" },
