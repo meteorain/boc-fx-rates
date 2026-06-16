@@ -5,3 +5,8 @@
 declare const chrome:
   | undefined
   | { i18n?: { getUILanguage?: () => string } };
+
+declare module '*.png' {
+  const src: string;
+  export default src;
+}

@@ -30,6 +30,15 @@ export const store = {
   },
 };
 
-export async function setTrayTitle(title: string): Promise<void> {
-  await invoke('set_tray_title', { title });
+/**
+ * Set the tray badge. `title` is used on macOS (menu-bar text); `rgba` is the
+ * pre-rendered icon used on Windows/Linux (where the tray can't show text).
+ */
+export async function setBadge(
+  rgba: number[],
+  width: number,
+  height: number,
+  title: string,
+): Promise<void> {
+  await invoke('set_badge', { rgba, width, height, title });
 }

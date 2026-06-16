@@ -7,11 +7,8 @@
     <link rel="stylesheet" href="/src/app.css" />
   </head>
   <body>
-    <header class="topbar">
-      <span class="brand">
-        <span class="brand__dot"></span>
-        <span class="brand__title" data-i18n="header"></span>
-      </span>
+    <div class="toolbar">
+      <span id="updated" class="updated"></span>
       <button id="refresh" class="icon-btn" type="button" data-i18n-title="refresh">
         <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
           <path
@@ -24,9 +21,8 @@
           />
         </svg>
       </button>
-    </header>
+    </div>
 
-    <p id="updated" class="updated"></p>
     <main id="list" class="list"></main>
 
     <script type="module" src="/src/main.ts"></script>

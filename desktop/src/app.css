@@ -49,6 +49,8 @@ body {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 10px;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .brand {
@@ -99,8 +101,15 @@ body {
   }
 }
 
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
 .updated {
-  margin: 0 0 12px 2px;
   font-size: 11px;
   color: var(--text-muted);
 }
