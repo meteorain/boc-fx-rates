@@ -8,8 +8,11 @@
     <meta property="og:title" content="中国银行外汇牌价 · BOC FX Rates" />
     <meta property="og:description" content="实时牌价 · 走势与便宜指数 · 货币换算 · 智能提醒。浏览器扩展与桌面应用。" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="./og.png" />
+    <meta property="og:url" content="https://boc.liuweinan.com/" />
+    <meta property="og:image" content="https://boc.liuweinan.com/og.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#0b0d12" />
+    <link rel="canonical" href="https://boc.liuweinan.com/" />
     <link rel="icon" href="./icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -67,6 +70,13 @@
             <div class="mock__bar">
               <span class="dot"></span><span class="dot"></span><span class="dot"></span>
               <span class="mock__title" data-i18n="brand">中国银行外汇牌价</span>
+              <button id="mock-settings" class="mock__gear" type="button" aria-label="设置 / Settings">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" /></svg>
+              </button>
+              <div id="settings-panel" class="mock__settings" hidden>
+                <div id="settings-head" class="mock__settings-head">显示币种 · 最多 3 个</div>
+                <div id="settings-grid" class="mock__settings-grid"></div>
+              </div>
             </div>
             <div class="mock__body">
               <div class="mock__updated"><span data-i18n="updatedLabel">更新于</span> <span id="mock-time">刚刚</span></div>
@@ -75,7 +85,7 @@
           </div>
           <div class="hero__badge">
             <img src="./icon.png" alt="" width="22" height="22" />
-            <span>680</span>
+            <span id="hero-badge-num">680</span>
           </div>
         </div>
       </section>
@@ -114,21 +124,21 @@
             <h3 data-i18n="extT">浏览器扩展</h3>
             <p data-i18n="extD">Chrome · Edge。点开工具栏即见牌价,角标常驻。</p>
             <div class="platform__btns">
-              <a class="btn btn--primary" href="https://chromewebstore.google.com/detail/%E4%B8%AD%E5%9B%BD%E9%93%B6%E8%A1%8C%E5%A4%96%E6%B1%87%E6%B1%87%E7%8E%87%E7%89%8C%E4%BB%B7/mkgpdgkagelcghmbkfbfamonaekfgpla" target="_blank" rel="noopener" data-i18n="extBtnChrome">Chrome 应用店</a>
-              <a class="btn btn--ghost" href="https://microsoftedge.microsoft.com/addons/detail/%E4%B8%AD%E5%9B%BD%E9%93%B6%E8%A1%8C%E5%A4%96%E6%B1%87%E6%B1%87%E7%8E%87%E7%89%8C%E4%BB%B7/llneijfgjfcnoajankojegallkldbklj" target="_blank" rel="noopener" data-i18n="extBtnEdge">Edge 加载项</a>
+              <a class="btn btn--primary" href="https://chromewebstore.google.com/detail/mkgpdgkagelcghmbkfbfamonaekfgpla" target="_blank" rel="noopener" data-i18n="extBtnChrome">Chrome 应用店</a>
+              <a class="btn btn--ghost" href="https://microsoftedge.microsoft.com/addons/detail/llneijfgjfcnoajankojegallkldbklj" target="_blank" rel="noopener" data-i18n="extBtnEdge">Edge 加载项</a>
             </div>
-            <a class="platform__dl" href="./boc-fx-rates-extension.zip" download>
+            <a class="platform__dl" href="https://c2.crxsoso.com/crx/blobs/AcPRoeoOxY2rHmHgwqbDpfIkdnnLJx0EKK1YWZccjgsqu5CerLZ_o3VvvzqVj4PJNoXgmrE0SMeip9O4I6hZWc_oHz15rqcj5knm75Q6L2KlGbW6gs8wmJ5ekJbKBp5eF2kAxlKa5UsXeMMD6TieNkqwhjhgvhcqI9aZ/MKGPDGKAGELCGHMBKFBFAMONAEKFGPLA_6_2_0_0.crx?ext=crx&amp;filename=%E4%B8%AD%E5%9B%BD%E9%93%B6%E8%A1%8C%E5%A4%96%E6%B1%87%E6%B1%87%E7%8E%87%E7%89%8C%E4%BB%B7%206.2.0&amp;type=install" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 21h16"/></svg>
-              <span data-i18n="extDl">直接下载 (.zip)</span>
+              <span data-i18n="extDl">直接下载 (.crx)</span>
             </a>
-            <span class="platform__note" data-i18n="extNote">需开发者模式「加载已解压」· 基于 Manifest V3</span>
+            <span class="platform__note" data-i18n="extNote">需开发者模式,拖入 chrome://extensions · 基于 Manifest V3</span>
           </article>
           <article class="platform reveal">
             <div class="platform__icon">🖥️</div>
             <h3 data-i18n="deskT">桌面应用</h3>
             <p data-i18n="deskD">macOS · Windows。菜单栏 / 托盘常驻,系统通知提醒。</p>
             <a class="btn btn--primary" href="https://github.com/meteorain/boc-fx-rates/releases" target="_blank" rel="noopener" data-i18n="deskBtn">下载桌面版</a>
-            <span class="platform__note" data-i18n="deskNote">Windows 便携版 / 安装版(通知功能需安装版)· 基于 Tauri</span>
+            <span class="platform__note" data-i18n="deskNote">macOS 首次需在「设置」里放行 · Windows 通知需安装版</span>
           </article>
         </div>
       </section>
@@ -156,9 +166,20 @@
         <span data-i18n="brand">中国银行外汇牌价</span>
       </div>
       <p class="footer__note" data-i18n="footNote">数据来源:中国银行外汇牌价。走势为市场参考价(frankfurter.dev / 欧洲央行),与牌价走势相近、绝对数值略有差异。本项目与中国银行无隶属关系。开源协议 MIT。</p>
-      <p class="footer__copy">© 2026 · <a href="https://github.com/meteorain/boc-fx-rates" target="_blank" rel="noopener">meteorain/boc-fx-rates</a></p>
+      <p class="footer__copy">© 2026 · <a href="https://liuweinan.com" target="_blank" rel="noopener">Vivian Liu</a></p>
     </footer>
 
     <script src="./main.js" type="module"></script>
+
+    <!-- 百度统计 Baidu Analytics -->
+    <script>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement('script');
+        hm.src = 'https://hm.baidu.com/hm.js?58648fc77f45c0cc1bb12f53781a4ecc';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
   </body>
 </html>

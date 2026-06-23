@@ -10,16 +10,28 @@ A small toolkit that shows the Bank of China FX board in real time — a **brows
 
 | 平台 Platform | 链接 |
 | --- | --- |
-| Chrome | [Chrome 网上应用店](https://chromewebstore.google.com/detail/%E4%B8%AD%E5%9B%BD%E9%93%B6%E8%A1%8C%E5%A4%96%E6%B1%87%E6%B1%87%E7%8E%87%E7%89%8C%E4%BB%B7/mkgpdgkagelcghmbkfbfamonaekfgpla) |
-| Edge | [Edge 加载项](https://microsoftedge.microsoft.com/addons/detail/%E4%B8%AD%E5%9B%BD%E9%93%B6%E8%A1%8C%E5%A4%96%E6%B1%87%E6%B1%87%E7%8E%87%E7%89%8C%E4%BB%B7/llneijfgjfcnoajankojegallkldbklj) |
+| Chrome | [Chrome 网上应用店](https://chromewebstore.google.com/detail/mkgpdgkagelcghmbkfbfamonaekfgpla) |
+| Edge | [Edge 加载项](https://microsoftedge.microsoft.com/addons/detail/llneijfgjfcnoajankojegallkldbklj) |
 | macOS 桌面版 | [GitHub Releases](https://github.com/meteorain/boc-fx-rates/releases) · `.dmg` |
 | Windows 桌面版 | [GitHub Releases](https://github.com/meteorain/boc-fx-rates/releases) · 便携版 `.exe` / 安装版 `*-setup.exe` |
 
-> ⚠️ **Windows 用户请注意:便携版收不到通知**
+> 🍎 **macOS 首次打开**:应用未做 Apple 公证,首次会提示"无法验证开发者"。**macOS 15+ 已不能用"右键→打开"绕过**,按下面任一方式放行一次即可:
+>
+> **方式一 · 系统设置(推荐)**
+> 1. 双击 App,弹框点 **「完成」**(别点"移到废纸篓");
+> 2. 打开 **系统设置 → 隐私与安全性**,滚到最底部的「安全性」区域;
+> 3. 看到"已阻止使用 'BOC FX Rates'…",点旁边的 **「仍要打开」**;
+> 4. 再点一次「仍要打开」,用 Touch ID / 密码确认 → ✅ 打开,之后正常双击。
+>
+> **方式二 · 终端一条命令**:`xattr -dr com.apple.quarantine "/Applications/BOC FX Rates.app"`(路径换成实际位置)
+>
+> _EN: Not notarized. First launch → System Settings → Privacy & Security → **Open Anyway** (right-click→Open no longer works on macOS 15+), or run the `xattr` command above._
+
+> 🪟 **Windows 用户请注意:便携版收不到通知**
 > 免安装的「便携版」单个 `.exe`,在 Windows 上**收不到任何通知**(汇率变化、阈值提醒、每日摘要都收不到)。这是 Windows 系统的限制——它只给"正式安装过"的程序发通知。**想要通知,请下载「安装版」(`*-setup.exe`),安装后使用。** macOS 没有这个问题。
 > _EN: The portable `.exe` cannot show notifications on Windows (a Windows limitation); install the `*-setup.exe` build if you want them. macOS is unaffected._
 
-官网(`website/`,纯静态,部署于 Vercel)汇总了上述入口与一个扩展安装包的直接下载。
+**官网:[boc.liuweinan.com](https://boc.liuweinan.com)**(源码在 `website/`,静态站,部署于 Vercel)—— 汇总上述入口与扩展安装包直链。
 
 ## 功能 Features
 
