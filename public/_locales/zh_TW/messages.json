@@ -18,6 +18,9 @@
   "refresh": { "message": "重新整理" },
   "settings": { "message": "設定" },
   "noData": { "message": "尚無匯率資料，點擊重新整理再試" },
+  "getDesktop": {
+    "message": "下載桌面版請到官網"
+  },
   "trendNote": { "message": "迷你走勢為市場參考價（資料 frankfurter.dev / 歐洲央行），與中行牌價走勢相近，絕對數值略有差異。" },
   "rangeLow": { "message": "區間低" },
   "rangeHigh": { "message": "區間高" },

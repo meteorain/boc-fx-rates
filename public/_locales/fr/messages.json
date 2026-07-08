@@ -18,6 +18,9 @@
   "refresh": { "message": "Actualiser" },
   "settings": { "message": "Réglages" },
   "noData": { "message": "Aucune donnée — cliquez sur Actualiser pour réessayer" },
+  "getDesktop": {
+    "message": "Téléchargez l’appli de bureau sur notre site"
+  },
   "trendNote": { "message": "Le mini-graphique montre le taux de référence du marché (données : frankfurter.dev / BCE). Sa forme suit de près les cotations de la Banque de Chine ; les valeurs absolues diffèrent légèrement." },
   "rangeLow": { "message": "Bas" },
   "rangeHigh": { "message": "Haut" },

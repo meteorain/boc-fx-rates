@@ -56,6 +56,9 @@
   "noData": {
     "message": "No rate data yet — click refresh to retry"
   },
+  "getDesktop": {
+    "message": "Download the desktop app on our website"
+  },
   "trendNote": {
     "message": "Sparkline shows the market reference rate (data: frankfurter.dev / ECB). Its shape tracks the BOC board closely; absolute values differ slightly.",
     "description": "Footer note clarifying the sparkline data source."

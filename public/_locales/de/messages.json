@@ -18,6 +18,9 @@
   "refresh": { "message": "Aktualisieren" },
   "settings": { "message": "Einstellungen" },
   "noData": { "message": "Noch keine Kursdaten — zum erneuten Versuch aktualisieren" },
+  "getDesktop": {
+    "message": "Desktop-App auf unserer Website herunterladen"
+  },
   "trendNote": { "message": "Die Mini-Grafik zeigt den Markt-Referenzkurs (Daten: frankfurter.dev / EZB). Ihr Verlauf folgt den Kursen der Bank of China eng; die absoluten Werte weichen leicht ab." },
   "rangeLow": { "message": "Tief" },
   "rangeHigh": { "message": "Hoch" },

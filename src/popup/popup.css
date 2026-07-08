@@ -621,6 +621,14 @@ body[data-surface='panel'] {
   text-align: center;
   color: var(--text-muted);
 }
+.foot__site {
+  color: var(--accent);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.foot__site:hover {
+  text-decoration: underline;
+}
 
 /* ---- empty state ---- */
 .empty {

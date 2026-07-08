@@ -18,6 +18,9 @@
   "refresh": { "message": "Aggiorna" },
   "settings": { "message": "Impostazioni" },
   "noData": { "message": "Nessun dato sui tassi — tocca Aggiorna per riprovare" },
+  "getDesktop": {
+    "message": "Scarica l’app desktop dal nostro sito"
+  },
   "trendNote": { "message": "Il mini-grafico mostra il tasso di riferimento di mercato (dati: frankfurter.dev / BCE). L'andamento segue da vicino le quotazioni della Banca di Cina; i valori assoluti differiscono leggermente." },
   "rangeLow": { "message": "Min" },
   "rangeHigh": { "message": "Max" },

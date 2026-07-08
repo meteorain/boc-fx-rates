@@ -18,6 +18,9 @@
   "refresh": { "message": "再読み込み" },
   "settings": { "message": "設定" },
   "noData": { "message": "レートデータがありません — 更新して再試行してください" },
+  "getDesktop": {
+    "message": "デスクトップ版は公式サイトから"
+  },
   "trendNote": { "message": "ミニチャートは市場参考レート（データ: frankfurter.dev / ECB）です。中国銀行の建値と傾向はほぼ一致しますが、絶対値は若干異なります。" },
   "rangeLow": { "message": "安値" },
   "rangeHigh": { "message": "高値" },
